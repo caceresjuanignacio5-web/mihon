@@ -32,6 +32,7 @@ android {
         buildConfigField("String", "COMMIT_COUNT", "\"${getLatestCommitCount()}\"")
         buildConfigField("String", "COMMIT_SHA", "\"${getLatestCommitSha()}\"")
         buildConfigField("String", "BUILD_TIME", "\"${getBuildTime(useLatestCommitTime = false)}\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"\"")
         buildConfigField("boolean", "TELEMETRY_INCLUDED", "${Config.includeTelemetry}")
         buildConfigField("boolean", "UPDATER_ENABLED", "${Config.enableUpdater}")
 
@@ -187,6 +188,7 @@ dependencies {
     implementation(libs.androidx.compose.materialIcons)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.animationGraphics)
+    implementation("androidx.navigation:navigation-compose:2.7.3")
     debugImplementation(libs.androidx.compose.uiTooling)
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.compose.uiUtil)
@@ -228,6 +230,8 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.okio)
     implementation(libs.conscrypt) // TLS 1.3 support for Android < 10
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
     // Data serialization (JSON, protobuf, xml)
     implementation(libs.bundles.serialization)
